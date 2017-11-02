@@ -7,7 +7,8 @@ def getBTCPrice():
     return BTCPrice
 
 def getNokiaPhone():
-    price = getBTCPrice()
+    #price = getBTCPrice()
+    price = 7100
     Found = False
     Nokiacoin, NokiacoinName, NokiacoinImg = '', '', ''
 
@@ -18,4 +19,6 @@ def getNokiaPhone():
             NokiacoinName = Nokiacoin.get('name')
             NokiacoinImg = Nokiacoin.get('image')
 
+    #phoneInfo = { 'Found': Found, 'name': NokiacoinName, 'img': NokiacoinImg}
+    #return phoneInfo
     return(Found, NokiacoinName, NokiacoinImg)
