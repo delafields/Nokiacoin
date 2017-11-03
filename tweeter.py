@@ -4,7 +4,7 @@ from index import *
 from io import BytesIO
 import time
 
-twitter = Twython(TWITTER_CONSUMER_KEY, TWITTER_SECRET_KEY, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET)
+twitter = Twython(process.env.TWITTER_CONSUMER_KEY, process.env.TWITTER_SECRET_KEY, process.env.TWITTER_ACCESS_TOKEN, process.env.TWITTER_ACCESS_SECRET)
 
 # If the rounded price matches a phone model,
 # tweets that phone's image
