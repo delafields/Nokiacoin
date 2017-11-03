@@ -1,10 +1,20 @@
 from twython import Twython, TwythonError
-from config import *
+#from config import *
 from index import *
 from io import BytesIO
+import os
+import dotenv
 import time
 
-twitter = Twython(process.env.TWITTER_CONSUMER_KEY, process.env.TWITTER_SECRET_KEY, process.env.TWITTER_ACCESS_TOKEN, process.env.TWITTER_ACCESS_SECRET)
+dotenv.load_dotenv('config.env')
+
+consumer_key = os.environ.get('TWITTER_CONSUMER_KEY')
+consumer_secret = os.environ.get('TWITTER_SECRET_KEY')
+twitter_access = os.environ.get('TWITTER_ACCESS_TOKEN')
+twitter_secret = os.environ.get('TWITTER_ACCESS_SECRET')
+
+twitter = Twython(consumer_key, consumer_secret, twitter_access, twitter_secret)
+#twitter = Twython(os.environ.get('TWITTER_CONSUMER_KEY'), os.environ.get('TWITTER_SECRET_KEY'), os.environ.get('TWITTER_ACCESS_TOKEN'), os.environ.get('TWITTER_ACCESS_SECRET'))
 
 # If the rounded price matches a phone model,
 # tweets that phone's image
@@ -26,10 +36,8 @@ def fireTweet():
             #failTweet = 'NO PHONE AT THIS PRICE (%s)' % roundedPrice
             #twitter.update_status(status =failTweet)
     except TwythonError as e:
-        print(e.error_code)
+        print(e)
 
     return
 
-while True:
-    fireTweet()
-    time.sleep(28800)
+fireTweet()
