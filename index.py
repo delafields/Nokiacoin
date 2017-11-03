@@ -1,4 +1,5 @@
 import requests
+import math
 from nokia import nokiaPhones
 
 # Requests the current BTC price and returns both
@@ -13,16 +14,14 @@ def getBTCPrice():
         sys.exit(1)
 
     actualBTCPrice = resBTCPrice.json()['USD']
-    roundedBTCPrice = int(round(resBTCPrice.json()['USD'] / 100) * 100)
+    roundedBTCPrice = int(math.floor(resBTCPrice.json()['USD'] / 100) * 100)
 
     return(actualBTCPrice, roundedBTCPrice)
 
 # Compares the rounded price against a dict of nokia phone models
 # returns the model info and prices
 def getNokiaPhone():
-    #price, roundedPrice = getBTCPrice()
-    price = 8008135
-    roundedPrice = 7100
+    price, roundedPrice = getBTCPrice()
     Found = False
     Nokiacoin, NokiacoinName, NokiacoinImg = '', '', ''
 

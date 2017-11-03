@@ -1,5 +1,4 @@
 from twython import Twython, TwythonError
-#from config import *
 from index import *
 from io import BytesIO
 import os
@@ -14,7 +13,6 @@ twitter_access = os.environ.get('TWITTER_ACCESS_TOKEN')
 twitter_secret = os.environ.get('TWITTER_ACCESS_SECRET')
 
 twitter = Twython(consumer_key, consumer_secret, twitter_access, twitter_secret)
-#twitter = Twython(os.environ.get('TWITTER_CONSUMER_KEY'), os.environ.get('TWITTER_SECRET_KEY'), os.environ.get('TWITTER_ACCESS_TOKEN'), os.environ.get('TWITTER_ACCESS_SECRET'))
 
 # If the rounded price matches a phone model,
 # tweets that phone's image
@@ -32,9 +30,9 @@ def fireTweet():
             twitter.update_status(status=successTweet, media_ids=[response['media_id']])
 
         else:
-            pass
-            #failTweet = 'NO PHONE AT THIS PRICE (%s)' % roundedPrice
-            #twitter.update_status(status =failTweet)
+            #pass
+            failTweet = 'NO PHONE AT THIS PRICE (%s) 😫' % price
+            twitter.update_status(status =failTweet)
     except TwythonError as e:
         print(e)
 
