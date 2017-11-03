@@ -2,6 +2,7 @@ from twython import Twython, TwythonError
 from config import *
 from index import *
 from io import BytesIO
+import time
 
 twitter = Twython(TWITTER_CONSUMER_KEY, TWITTER_SECRET_KEY, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET)
 
@@ -29,4 +30,6 @@ def fireTweet():
 
     return
 
-fireTweet()
+while True:
+    fireTweet()
+    time.sleep(28800)
