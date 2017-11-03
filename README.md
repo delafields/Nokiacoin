@@ -9,4 +9,9 @@
 ##### And in the words of Satoshi Nokiamoto:
 > Connecting People to Bitcoin
 
+
+
+
+
+##### My binary poems look like this:
 ![picture](assets/tweetScreenshot.png)
