@@ -1,4 +1,4 @@
-nokia_phones = {
+nokiaPhones = {
     1000: {
         "name": "Nokia 1006",
         "image": "https://i-cdn.phonearena.com/images/phones/11972-specs/Nokia-1006.jpg"

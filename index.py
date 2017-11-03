@@ -1,24 +1,33 @@
 import requests
-from nokia import nokia_phones
+from nokia import nokiaPhones
 
+# Requests the current BTC price and returns both
+# the price as well as the price rounded to the hundreds
 def getBTCPrice():
-    reqBTCPrice = requests.get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD')
-    BTCPrice = int(round(reqBTCPrice.json()['USD'] / 100) * 100)
-    return BTCPrice
+    print('Getting the current price of BTC...')
 
+    resBTCPrice = requests.get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD')
+    actualBTCPrice = resBTCPrice.json()['USD']
+    roundedBTCPrice = int(round(resBTCPrice.json()['USD'] / 100) * 100)
+
+    return(actualBTCPrice, roundedBTCPrice)
+
+# Compares the rounded price against a dict of nokia phone models
+# returns the model info and prices
 def getNokiaPhone():
-    #price = getBTCPrice()
-    price = 7100
+    #price, roundedPrice = getBTCPrice()
+    price = 8008135
+    roundedPrice = 7100
     Found = False
     Nokiacoin, NokiacoinName, NokiacoinImg = '', '', ''
 
-    for phone in nokia_phones:
-        if(phone == price and Found == False):
+    for phone in nokiaPhones:
+        if(phone == roundedPrice and Found == False):
             Found = True
-            Nokiacoin = nokia_phones[phone]
-            NokiacoinName = Nokiacoin.get('name')
-            NokiacoinImg = Nokiacoin.get('image')
+            matchedPhone = nokiaPhones[phone]
+            matchedPhoneName = matchedPhone.get('name')
+            matchedPhoneImg = matchedPhone.get('image')
+        else:
+            pass
 
-    #phoneInfo = { 'Found': Found, 'name': NokiacoinName, 'img': NokiacoinImg}
-    #return phoneInfo
-    return(Found, NokiacoinName, NokiacoinImg, price)
+    return(Found, matchedPhoneName, matchedPhoneImg, roundedPrice, price)
