@@ -21,4 +21,4 @@ def getNokiaPhone():
 
     #phoneInfo = { 'Found': Found, 'name': NokiacoinName, 'img': NokiacoinImg}
     #return phoneInfo
-    return(Found, NokiacoinName, NokiacoinImg)
+    return(Found, NokiacoinName, NokiacoinImg, price)
