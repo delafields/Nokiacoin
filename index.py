@@ -6,7 +6,12 @@ from nokia import nokiaPhones
 def getBTCPrice():
     print('Getting the current price of BTC...')
 
-    resBTCPrice = requests.get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD')
+    try:
+        resBTCPrice = requests.get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD')
+    except requests.exceptions.RequestException as e:
+        print e
+        sys.exit(1)
+        
     actualBTCPrice = resBTCPrice.json()['USD']
     roundedBTCPrice = int(round(resBTCPrice.json()['USD'] / 100) * 100)
 
