@@ -26,7 +26,7 @@ def fireTweet():
             photo = BytesIO(response.content)
             response = twitter.upload_media(media=photo)
 
-            successTweet = "At {0}, #BTC is a {1}".format(price, phoneModel)
+            successTweet = "At ${0}, #BTC is a {1}".format(price, phoneModel)
             twitter.update_status(status=successTweet, media_ids=[response['media_id']])
 
         else:
