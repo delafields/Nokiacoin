@@ -32,7 +32,7 @@ def fireTweet():
             photo = BytesIO(response.content)
             response = twitter.upload_media(media=photo)
 
-            successTweet = tweets[random.randrange(0, 6)].format(
+            successTweet = tweets[random.randrange(0, len(tweets))].format(
                 price, phoneModel)
             twitter.update_status(
                 status=successTweet, media_ids=[response['media_id']])
