@@ -1,6 +1,5 @@
 import os
 import dotenv
-import time
 import random
 from twython import Twython, TwythonError
 from io import BytesIO
