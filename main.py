@@ -9,16 +9,8 @@ from twython import Twython, TwythonError
 from io import BytesIO
 from data import phone_model_data, tweet_templates
 
-dotenv.load_dotenv('config.env')
-
-consumer_key = os.environ.get('TWITTER_CONSUMER_KEY')
-consumer_secret = os.environ.get('TWITTER_SECRET_KEY')
-twitter_access = os.environ.get('TWITTER_ACCESS_TOKEN')
-twitter_secret = os.environ.get('TWITTER_ACCESS_SECRET')
-
-
 def get_btc_price():
-    '''Requests the current BTC price in $s. Returns the price and price rounded to the hundredths'''
+    '''Requests the current BTC price in $s. Returns the price and price rounded to the hundreds'''
 
     url = 'https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD'
 
@@ -59,6 +51,13 @@ def get_nokia_phone(true_price, rounded_price):
     tweet_data = PhoneData(found=Found, phone_name=phone_name, phone_image=phone_image)
 
     return(tweet_data)
+
+dotenv.load_dotenv('config.env')
+
+consumer_key = os.environ.get('TWITTER_CONSUMER_KEY')
+consumer_secret = os.environ.get('TWITTER_SECRET_KEY')
+twitter_access = os.environ.get('TWITTER_ACCESS_TOKEN')
+twitter_secret = os.environ.get('TWITTER_ACCESS_SECRET')
 
 twitter = Twython(consumer_key, consumer_secret, twitter_access,
                   twitter_secret)
